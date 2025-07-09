@@ -1,0 +1,122 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      createBafflesDict;
+}
+
+// Exported by SnappyHexMesh GUI add-on for Blender v1.8
+// Source file: /home/da/cherry/blender_models/piston2_water_shower_flowing/piston_water-lower-region_shower.blend
+// Export date: 2025-02-03 17:28:54.029857
+
+internalFacesOnly true;
+
+baffles
+{
+    piston
+    {
+        type faceZone;
+        zoneName piston;
+
+        patches
+        {
+            owner
+            {
+                name piston;
+                type patch;
+            }
+
+            neighbour
+            {
+                name piston_2;
+                type patch;
+            }
+        }
+    }
+
+    water
+    {
+        type faceZone;
+        zoneName water;
+
+        patches
+        {
+            owner
+            {
+                name water;
+                type patch;
+            }
+
+            neighbour
+            {
+                name water_2;
+                type patch;
+            }
+        }
+    }
+
+    water_inlet
+    {
+        type faceZone;
+        zoneName water_inlet;
+
+        patches
+        {
+            owner
+            {
+                name water_inlet;
+                type patch;
+            }
+
+            neighbour
+            {
+                name water_inlet_2;
+                type patch;
+            }
+        }
+    }
+
+    water_outlet
+    {
+        type faceZone;
+        zoneName water_outlet;
+
+        patches
+        {
+            owner
+            {
+                name water_outlet;
+                type patch;
+            }
+
+            neighbour
+            {
+                name water_outlet_2;
+                type patch;
+            }
+        }
+    }
+
+    water_wall
+    {
+        type faceZone;
+        zoneName water_wall;
+
+        patches
+        {
+            owner
+            {
+                name water_wall;
+                type patch;
+            }
+
+            neighbour
+            {
+                name water_wall_2;
+                type patch;
+            }
+        }
+    }
+
+
+}

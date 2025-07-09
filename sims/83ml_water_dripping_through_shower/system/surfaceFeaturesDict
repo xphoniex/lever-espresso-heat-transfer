@@ -1,0 +1,27 @@
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    object          surfaceFeaturesDict;
+}
+
+// Exported by SnappyHexMesh GUI add-on for Blender v1.8
+// Source file: /home/da/cherry/blender_models/piston2_water_shower_flowing/piston_water-lower-region_shower.blend
+// Export date: 2025-02-03 17:28:54.029617
+
+
+
+surfaces
+(
+    "piston.stl"
+    "water.stl"
+    "water_inlet.stl"
+    "water_outlet.stl"
+    "water_wall.stl"
+);
+
+includedAngle 150;
+writeObj yes;
+
+

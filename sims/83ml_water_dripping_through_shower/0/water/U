@@ -1,0 +1,69 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       volVectorField;
+    location    "0/water";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+Uinlet          (0 0 0);
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+/*
+    waterInlet
+    {
+        type            fixedValue;
+        value           uniform $Uinlet;
+    }
+
+    waterOutlet
+    {
+    	type zeroGradient;
+
+        //type            pressureInletOutletVelocity;
+        //value           $internalField;
+
+    }
+
+    wall
+    {
+        type            slip;
+    }
+*/
+
+    waterInlet
+    {
+        type            flowRateInletVelocity;
+        volumetricFlowRate constant 1.6e-6;		// m3/s or kg/s
+        //volumetricFlowRate constant 0;
+    }
+
+    "waterWall|water_to_piston"
+    {
+        type            slip;
+    }
+
+    "water_to_shower|waterOutlet"
+    {
+        type            inletOutlet;
+        inletValue      uniform (0 0 0);
+        //value           uniform (0 0 -0.001154866);
+        value           uniform (0 0 -0.01154866);
+    }    
+}
+
+
+// ************************************************************************* //

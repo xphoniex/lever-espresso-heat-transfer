@@ -1,0 +1,129 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+/*
+limitTemperature
+{
+    type	limitTemperature;
+    active	true;
+    limitTemperatureCoeffs
+    {
+        selectionMode all;
+        min	100;
+        max	500;
+    }
+}
+*/
+
+/*
+energySource
+{
+    type            scalarSemiImplicitSource;
+    active          true;
+
+
+    scalarSemiImplicitSourceCoeffs
+    {   
+        selectionMode   all;
+        volumeMode      absolute;//specific;//
+        injectionRateSuSp
+        {
+            h           (0 0); //   q in [W]; or in [W/m³] if you use specific mode
+        }     
+    }
+}
+*/
+
+/*
+energySource
+{
+    type            semiImplicitSource;
+    select          all;
+    volumeMode      absolute;
+
+    sources
+    {
+        h
+        {
+            implicit 0;
+        }
+    }
+}
+*/
+/*
+porosity1
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        shower;
+
+        type            DarcyForchheimer;
+
+        d   (7e5 -1000 -1000);
+        f   (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (0.70710678 0.70710678 0);
+                e3      (0 0 1);
+            }
+        }
+        
+    }
+}
+
+porosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        shower;
+
+        type            DarcyForchheimer;
+
+        // D 100;  // Very little blockage
+        // D 200;  // Some blockage but steady flow
+        // D 500;  // Slight waviness in the far wake
+        D 200; // Fully shedding behavior
+
+        d   ($D $D $D);
+        f   (0 0 0);
+
+        coordinateSystem 
+        {
+    type    cartesian;
+    origin  (0 0 0);
+    coordinateRotation
+    {
+        type    axesRotation;
+        e1  (1 0 0);
+        e2  (0 1 0);
+    }        
+        }
+    }
+}
+
+*/
+// ************************************************************************* //

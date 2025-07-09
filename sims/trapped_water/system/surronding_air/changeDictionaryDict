@@ -1,0 +1,216 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+U
+{
+    internalField   uniform (0.0 0 0);
+
+    boundaryField
+    {
+        minX
+        {
+            type            fixedValue;
+            value           uniform (0.0 0 0);
+        }
+
+        maxX
+        {
+            type            inletOutlet;
+            inletValue      uniform (0 0 0);
+        }
+
+        ".*"
+        {
+            type            noSlip;
+        }
+    }
+}
+
+// 300 kelvin = ambeint = 27 centigrade
+// 373 kelvin           = 100 centigrade
+
+T
+{
+    //internalField   uniform 100;
+
+
+    boundaryField
+    {
+/*  
+        minX
+        {
+            type            fixedValue;
+            value           uniform 300;
+        }
+
+        maxX
+        {
+            type            inletOutlet;
+            inletValue      uniform 300;
+        }
+
+        ".*"
+        {
+            type            fixedValue;//zeroGradient;
+            value           uniform 300;
+        }
+*/
+// Qwen2.5 start
+/*
+        minX
+        {
+            type            zeroGradient;  // Allow heat to flow through this boundary
+        }
+
+        maxX
+        {
+            //type            inletOutlet;  // Allow for both inflow and outflow
+            //inletValue      uniform 300; // Initial temperature for inlet condition
+            type            zeroGradient;  
+        }
+*/
+        ".*"
+        {
+            type            zeroGradient;  // Allow heat to flow through these boundaries
+        }
+
+// Qwen2.5 end
+// dave 2.5 start
+/*
+        minX
+        {
+            type            fixedValue;  // Allow heat to flow through this boundary
+        }
+
+        maxX
+        {
+            //type            inletOutlet;  // Allow for both inflow and outflow
+            //inletValue      uniform 300; // Initial temperature for inlet condition
+            type            fixedValue;  
+        }
+
+        ".*"
+        {
+            type            fixedValue;  // Allow heat to flow through these boundaries
+        }
+// dave 2.5 end   
+*/     
+        "surronding_air_to_.*"
+        {
+            type            compressible::turbulentTemperatureCoupledBaffleMixed;
+            Tnbr            T;
+            kappaMethod     fluidThermo;
+            value           uniform 300;
+        }
+    }  
+
+}
+
+/*
+epsilon
+{
+    internalField   uniform 0.01;
+
+    boundaryField
+    {
+        minX
+        {
+            type            fixedValue;
+            value           uniform 0.01;
+        }
+
+        maxX
+        {
+            type            inletOutlet;
+            inletValue      uniform 0.01;
+        }
+
+        ".*"
+        {
+            type            epsilonWallFunction;
+            value           uniform 0.01;
+        }
+    }
+}
+
+k
+{
+    internalField   uniform 0.1;
+
+    boundaryField
+    {
+        minX
+        {
+            type            inletOutlet;
+            inletValue      uniform 0.1;
+        }
+
+        maxX
+        {
+            type            zeroGradient;
+            value           uniform 0.1;
+        }
+
+        ".*"
+        {
+            type            kqRWallFunction;
+            value           uniform 0.1;
+        }
+    }
+}
+*/
+
+p_rgh
+{
+    internalField   uniform 0;
+
+    boundaryField
+    {
+        minX
+        {
+            type            zeroGradient;
+            value           uniform 0;
+        }
+
+        maxX
+        {
+            type            fixedValue;
+            value           uniform 0;
+        }
+
+        ".*"
+        {
+            type            fixedFluxPressure;
+            value           uniform 0;
+        }
+    }
+}
+
+p
+{
+    internalField   uniform 0;
+
+    boundaryField
+    {
+        ".*"
+        {
+            type            calculated;
+            value           uniform 0;
+        }
+    }
+}
+
+// ************************************************************************* //

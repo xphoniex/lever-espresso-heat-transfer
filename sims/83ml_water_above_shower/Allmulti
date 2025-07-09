@@ -1,0 +1,21 @@
+#!/bin/bash
+
+cp -r constant/{piston,water,surronding_air} processor0/0/
+cp -r constant/{piston,water,surronding_air} processor1/0/
+cp -r constant/{piston,water,surronding_air} processor2/0/
+cp -r constant/{piston,water,surronding_air} processor3/0/
+cp -r constant/{piston,water,surronding_air} processor4/0/
+cp -r constant/{piston,water,surronding_air} processor5/0/
+cp -r constant/{piston,water,surronding_air} processor6/0/
+cp -r constant/{piston,water,surronding_air} processor7/0/
+
+cp -r 0/{piston,water,surronding_air} processor0/0/
+cp -r 0/{piston,water,surronding_air} processor1/0/
+cp -r 0/{piston,water,surronding_air} processor2/0/
+cp -r 0/{piston,water,surronding_air} processor3/0/
+cp -r 0/{piston,water,surronding_air} processor4/0/
+cp -r 0/{piston,water,surronding_air} processor5/0/
+cp -r 0/{piston,water,surronding_air} processor6/0/
+cp -r 0/{piston,water,surronding_air} processor7/0/
+
+

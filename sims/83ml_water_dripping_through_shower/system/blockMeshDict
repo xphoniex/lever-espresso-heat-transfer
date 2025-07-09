@@ -1,0 +1,51 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+// Exported by SnappyHexMesh GUI add-on for Blender v1.8
+// Source file: /home/da/cherry/blender_models/piston2_water_shower_flowing/piston_water-lower-region_shower.blend
+// Export date: 2025-02-03 17:28:54.029693
+
+convertToMeters 0.1;
+
+vertices
+(
+    ( -0.39 -0.39 -0.615 )
+    ( 0.39 -0.39 -0.615 )
+    ( 0.39 0.39 -0.615 )
+    ( -0.39 0.39 -0.615 )
+    ( -0.39 -0.39 0.465 )
+    ( 0.39 -0.39 0.465 ) 
+    ( 0.39 0.39 0.465 ) 
+    ( -0.39 0.39 0.465 ) 
+);
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (52 52 72) simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+boundary
+(
+    world
+    {
+        type patch;
+        faces
+        (
+            (3 7 6 2)
+            (0 4 7 3)
+            (2 6 5 1)
+            (1 5 4 0)
+            (0 3 2 1)
+            (4 5 6 7)
+        );
+    }
+);
