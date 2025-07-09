@@ -20,10 +20,26 @@ For future:
 
 ## Models
 
-Some folders are missing model data due to the upload size. They are located inside `0/polyMesh` and `constant/*/polyMesh` folders. You cna regenerate them using blender and snappyHexMesh plugin.
+Some folders are missing model data due to the upload size. They are located inside `0/polyMesh` and `constant/*/polyMesh` folders. You can regenerate them using blender and snappyHexMesh plugin.
 
 For gmsh models, make sure to export them to `.msh` extension using `Version 2 ASCII` and then `gmshToFoam`.
 
 ## Scripts
 
-Most of the work was done by me manually tinkering the files. Scripts may not work.
+Most of the work was done by me manually tinkering with the files. Scripts may not work.
+
+## Version
+
+```bash
+$ chtMultiRegionFoam version
+...
+Using: OpenFOAM-dev (see https://openfoam.org)
+Build: dev-26ba086f3168
+
+
+$ paraFoam -help
+...
+* Start ParaView 5.10.0-RC1 with the OpenFOAM libraries
+```
+
+By the way, if you're not seeing the correct simulation data, make sure you're viewing using `paraFoam -builtin`.
